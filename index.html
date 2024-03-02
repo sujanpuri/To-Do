@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+</head>
+
+<style>
+    *
+    {
+        text-align: center;
+        margin: 0px;
+        background-color: rgb(29, 29, 29);
+        color: white;
+    }
+    h1
+    {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 45px;
+        margin: 25px;
+    }
+    main
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #listcont
+    {
+        height: 550px;
+        width: 400px;
+        border: 1px solid white;
+        border-radius: 25px; 
+        text-align: center;
+        padding: 10px;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+    #gpt
+    {
+        text-align: end;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid white;
+    }
+
+    /* lists */
+
+    .list
+    {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: fit-content;
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid rgb(29, 29, 29);
+        border-radius: 25px;
+    }
+    .data
+    {
+        height: 25px;
+        text-align: start;
+        font-size: 18px;
+        overflow-y: inherit;
+        background: ;
+        border: 0px;
+        width: 80%;
+    }
+    .data:focus
+    {
+        outline: none;
+    }
+    button, dltbtn
+    {
+        border: none;
+        background-color: rgb(29, 29, 29);
+    }
+    .chkbx{
+        color: black;
+        background-color: rgb(29, 29, 29);
+    }
+</style>
+<body>
+    <h1>To-Do List</h1>
+    <main>
+        <section id="listcont">
+            <p>"Empower Your Productivity: Unleash the Power of Organization!"</p>
+            <p id="gpt">- Chat GPT</p>
+            <div id="lists">
+
+            </div>
+            <button title="Add List" type="button" class="button" onclick="add()">+ Add List</button>
+        </section>
+    </main>
+
+    <script>
+        let listcont = document.querySelector('#lists')
+    
+        add = () =>
+        {
+            let newElement = document.createElement('div');
+            newElement.innerHTML = `<div class="list">
+                <input type="checkbox" class="chkbx" title="check?">
+                <textarea title="Enter something" class="data"></textarea>
+                <button type="button" class="dltbtn">X</button>
+                </div>`;
+            listcont.appendChild(newElement);
+            
+            let dltbtn = newElement.querySelector('.dltbtn');
+            dltbtn.addEventListener('click', function() {
+                let parentDiv = dltbtn.closest('.list');        //this finds the closest ancestor of .list
+                parentDiv.parentNode.removeChild(parentDiv);
+            });
+        }
+    </script>
+    
+</body>
+</html>
