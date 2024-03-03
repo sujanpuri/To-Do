@@ -11,15 +11,22 @@
     {
         text-align: center;
         margin: 0px;
-        background-color: rgb(29, 29, 29);
         color: white;
+    }
+    body
+    {
+        background-image: url(stickeybg.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     h1
     {
-        font-family: 'Times New Roman', Times, serif;
+        font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 45px;
         margin: 25px;
+        color: #ffffff;
     }
+
     main
     {
         display: flex;
@@ -32,11 +39,24 @@
         height: 550px;
         width: 400px;
         border: 1px solid white;
+        backdrop-filter: brightness(70%) blur(3px);
         border-radius: 25px; 
         text-align: center;
         padding: 10px;
         overflow-y: auto;
         scrollbar-width: none;
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+        0% {
+            box-shadow: 0 0 5px 0 #efe1c8;
+        }
+        100% {
+            box-shadow: 0 0 10px 5px #efe1c8;
+        }
     }
     #gpt
     {
@@ -45,7 +65,15 @@
         margin-bottom: 10px;
         border-bottom: 1px solid white;
     }
-
+    @media only screen and (max-width:430px)
+    {
+        #listcont
+        {
+            height: 450px;
+            width: 300px;
+            margin-bottom: 70px;
+        }
+    }
     /* lists */
 
     .list
@@ -56,7 +84,6 @@
         height: fit-content;
         padding: 5px;
         margin: 10px;
-        border: 1px solid rgb(29, 29, 29);
         border-radius: 25px;
     }
     .data
@@ -65,7 +92,7 @@
         text-align: start;
         font-size: 18px;
         overflow-y: inherit;
-        background: ;
+        background-color: transparent;
         border: 0px;
         width: 80%;
     }
@@ -76,12 +103,13 @@
     button, dltbtn
     {
         border: none;
-        background-color: rgb(29, 29, 29);
+        background-color: transparent;
+        font-size: 20px;
+        color: whitesmoke;
     }
-    .chkbx{
-        color: black;
-        background-color: rgb(29, 29, 29);
-    }
+    
+    
+
 </style>
 <body>
     <h1>To-Do List</h1>
@@ -104,7 +132,7 @@
             let newElement = document.createElement('div');
             newElement.innerHTML = `<div class="list">
                 <input type="checkbox" class="chkbx" title="check?">
-                <textarea title="Enter something" class="data"></textarea>
+                <input title="Enter something" class="data">
                 <button type="button" class="dltbtn">X</button>
                 </div>`;
             listcont.appendChild(newElement);
@@ -115,6 +143,18 @@
                 parentDiv.parentNode.removeChild(parentDiv);
             });
         }
+        let check = document.querySelector('.checkbox');
+        check.addEventListener('change', function()
+        {
+            if(check.checked)
+            {
+                
+            }
+            else
+            {
+
+            }
+        })
     </script>
     
 </body>
